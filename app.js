@@ -46,7 +46,13 @@ function playGame(req,res,guess){
   console.log("guess: "+guess);
 
   if (word_letters.includes(guess)) {
+    console.log("guessed right!");
+    guessed_letter = word_letters.find(function(guessed_letter){
+      return guessed_letter === guess;
+    });
+    console.log("guessed_letter index: "+word_letters.indexOf(guessed_letter))
   }
+
   else {
     console.log("guessed wrong!");
   }
