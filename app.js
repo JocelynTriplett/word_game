@@ -22,8 +22,27 @@ app.use(session({
   saveUninitialized: true
 }));
 
+function getWord (req) {
+  var random = words[Math.floor(Math.random() * words.length)];
+  //console.log("random: "+random);
+  //console.log("req.session: "+req.session[0]);
+  req.session.word = random;
+  console.log("req.session.word: "+req.session.word);
+  console.log("req.session.word.length: "+req.session.word.length);
+}
+
+function playGame(req){
+
+}
+
 app.get('/',function(req,res){
   res.render('index');
+  if (req.session.word) {
+    playGame (req);
+  }
+  else {
+    getWord (req);
+  }
 });
 
 app.post('/', function(req, res){
