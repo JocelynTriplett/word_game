@@ -25,6 +25,7 @@ app.use(session({
 // game code
 
 var guessed_letters = [];
+var unguessed_letters = [];
 
 function getWord (req,res) {
   var random = words[Math.floor(Math.random() * words.length)];
@@ -33,6 +34,9 @@ function getWord (req,res) {
   req.session.word = random;
   //console.log("req.session.word: "+req.session.word);
   //console.log("req.session.word.length: "+req.session.word.length);
+  for (var i = 0; i < random.length; i++) {
+    unguessed_letters.push('_');
+  }
   res.redirect('/');
 }
 
@@ -51,6 +55,7 @@ function playGame(req,res,guess){
       return guessed_letter === guess;
     });
     console.log("guessed_letter index: "+word_letters.indexOf(guessed_letter))
+    unguessed_letters[word_letters.indexOf(guessed_letter)] = guessed_letter;
   }
 
   else {
@@ -62,9 +67,11 @@ function playGame(req,res,guess){
    word: current_session.word,
    word_length: current_session.word.length,
    word_letters: word_letters,
-   guessed_letters: guessed_letters});
+   guessed_letters: guessed_letters,
+   unguessed_letters: unguessed_letters});
   console.log("req.session.word: "+req.session.word);
   console.log("req.session.word.length: "+req.session.word.length);
+  console.log("unguessed_letters: "+unguessed_letters);
 }
 
 app.get('/',function(req,res){
