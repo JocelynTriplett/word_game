@@ -22,6 +22,10 @@ app.use(session({
   saveUninitialized: true
 }));
 
+// game code
+
+var guessed_letters = [];
+
 function getWord (req,res) {
   var random = words[Math.floor(Math.random() * words.length)];
   //console.log("random: "+random);
@@ -33,10 +37,15 @@ function getWord (req,res) {
 }
 
 function playGame(req,res){
+  word = current_session.word;
+  word_letters = [...word];
+  //console.log("word_letters: "+word_letters);
   res.render('index',
   {session: current_session,
    word: current_session.word,
-   word_length: current_session.word.length});
+   word_length: current_session.word.length,
+   word_letters: [...word],
+   guessed_letters: guessed_letters});
   console.log("req.session.word: "+req.session.word);
   console.log("req.session.word.length: "+req.session.word.length);
 }
@@ -53,6 +62,9 @@ app.get('/',function(req,res){
 });
 
 app.post('/', function(req, res){
+  var guess = req.body.letter;
+  guessed_letters.push(guess);
+  playGame (req,res);
 
 });
 
