@@ -39,13 +39,13 @@ function getWord (req,res) {
 function playGame(req,res,guess){
   current_session = req.session;
   word = current_session.word;
+  word_letters = word.split('');
   //word_letters = [...word];
-  //console.log("word_letters: "+word_letters);
+  console.log("word_letters: "+word_letters);
   console.log("guessed_letters: "+guessed_letters);
-  console.log(guess);
+  console.log("guess: "+guess);
 
-  if (word.includes(guess)) {
-    console.log("guessed right!");
+  if (word_letters.includes(guess)) {
   }
   else {
     console.log("guessed wrong!");
@@ -55,7 +55,7 @@ function playGame(req,res,guess){
   {session: current_session,
    word: current_session.word,
    word_length: current_session.word.length,
-   //word_letters: [...word],
+   word_letters: word_letters,
    guessed_letters: guessed_letters});
   console.log("req.session.word: "+req.session.word);
   console.log("req.session.word.length: "+req.session.word.length);
