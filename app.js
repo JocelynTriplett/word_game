@@ -22,27 +22,32 @@ app.use(session({
   saveUninitialized: true
 }));
 
-function getWord (req) {
+function getWord (req,res) {
   var random = words[Math.floor(Math.random() * words.length)];
   //console.log("random: "+random);
   //console.log("req.session: "+req.session[0]);
   req.session.word = random;
+  //console.log("req.session.word: "+req.session.word);
+  //console.log("req.session.word.length: "+req.session.word.length);
+  res.redirect('/');
+}
+
+function playGame(req){
   console.log("req.session.word: "+req.session.word);
   console.log("req.session.word.length: "+req.session.word.length);
 }
 
-function playGame(req){
-
-}
-
 app.get('/',function(req,res){
-  res.render('index');
+  current_session = req.session;
   if (req.session.word) {
     playGame (req);
+    res.render('index',{session: current_session});
+    console.log(current_session);
   }
   else {
-    getWord (req);
+    getWord (req,res);
   }
+
 });
 
 app.post('/', function(req, res){
