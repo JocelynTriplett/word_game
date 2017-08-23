@@ -32,7 +32,11 @@ function getWord (req,res) {
   res.redirect('/');
 }
 
-function playGame(req){
+function playGame(req,res){
+  res.render('index',
+  {session: current_session,
+   word: current_session.word,
+   word_length: current_session.word.length});
   console.log("req.session.word: "+req.session.word);
   console.log("req.session.word.length: "+req.session.word.length);
 }
@@ -40,9 +44,7 @@ function playGame(req){
 app.get('/',function(req,res){
   current_session = req.session;
   if (req.session.word) {
-    playGame (req);
-    res.render('index',{session: current_session});
-    console.log(current_session);
+    playGame (req,res);
   }
   else {
     getWord (req,res);
