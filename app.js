@@ -26,6 +26,7 @@ app.use(session({
 
 var guessed_letters = [];
 var unguessed_letters = [];
+var remaining_letters = [];
 
 function getWord (req,res) {
   var random = words[Math.floor(Math.random() * words.length)];
@@ -37,6 +38,7 @@ function getWord (req,res) {
   for (var i = 0; i < random.length; i++) {
     unguessed_letters.push('_');
   }
+  remaining_letters = random.split('');
   res.redirect('/');
 }
 
@@ -49,13 +51,14 @@ function playGame(req,res,guess){
   console.log("guessed_letters: "+guessed_letters);
   console.log("guess: "+guess);
 
-  if (word_letters.includes(guess)) {
+  if (remaining_letters.includes(guess)) {
     console.log("guessed right!");
-    guessed_letter = word_letters.find(function(guessed_letter){
+    guessed_letter = remaining_letters.find(function(guessed_letter){
       return guessed_letter === guess;
     });
-    console.log("guessed_letter index: "+word_letters.indexOf(guessed_letter))
-    unguessed_letters[word_letters.indexOf(guessed_letter)] = guessed_letter;
+    console.log("guessed_letter index: "+remaining_letters.indexOf(guessed_letter))
+    unguessed_letters[remaining_letters.indexOf(guessed_letter)] = guess;
+    remaining_letters[word_letters.indexOf(guessed_letter)] = ' ';
   }
 
   else {
