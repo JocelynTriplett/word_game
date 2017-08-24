@@ -9,13 +9,13 @@
  </head>
 
  <body>
-   <h3>This is views/index.mustache</h3>
-   <h1>Word Game</h1>
+   <!-- <h3>This is views/index.mustache</h3> -->
+   <h1>Mystery Word</h1>
    <h2>The mystery word is: {{word}}</h2>
-   <h2>It is {{word_length}} characters long.</h2>
-   <h2>Here are the letters: {{word_letters}}.</h2>
-   <h2>Here are the guessed letters: {{guessed_letters}}.</h2>
-   <h2>Here are the unguessed letters: {{unguessed_letters}}.</h2>
+   <!-- <h2>It is {{word_length}} characters long.</h2>
+   <h2>Here are the letters: {{word_letters}}.</h2> -->
+   <h2>You have guessed: {{guessed_letters}}</h2>
+   <h1>{{unguessed_letters}}</h1>
 
    <form action="/" method="post">
      <label for="letter">Type a letter</label>

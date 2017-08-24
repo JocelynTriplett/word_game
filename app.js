@@ -49,19 +49,21 @@ function playGame(req,res,guess){
   current_session = req.session;
   word = current_session.word;
   word_letters = word.split('');
-  //word_letters = [...word];
-  console.log("word_letters: "+word_letters);
-  console.log("guessed_letters: "+guessed_letters);
-  console.log("guess: "+guess);
+  // console.log("word_letters: "+word_letters);
+  // console.log("guessed_letters: "+guessed_letters);
+  // console.log("guess: "+guess);
 
   if (remaining_letters.includes(guess)) {
     console.log("guessed right!");
-    guessed_letter = remaining_letters.find(function(guessed_letter){
-      return guessed_letter === guess;
-    });
-    console.log("guessed_letter index: "+remaining_letters.indexOf(guessed_letter))
-    unguessed_letters[remaining_letters.indexOf(guessed_letter)] = guess;
-    remaining_letters[word_letters.indexOf(guessed_letter)] = ' ';
+    for (var i = 0; i < remaining_letters.length; i++) {
+      guessed_letter = remaining_letters.find(function(guessed_letter){
+        return guessed_letter === guess;
+      });
+      console.log("guessed_letter index: "+remaining_letters.indexOf(guessed_letter))
+      unguessed_letters[remaining_letters.indexOf(guessed_letter)] = guess;
+      remaining_letters[word_letters.indexOf(guessed_letter)] = ' ';
+    }
+
   }
 
   else {
