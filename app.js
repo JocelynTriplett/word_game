@@ -30,6 +30,7 @@ app.use(session({
 var guessed_letters = [];
 var unguessed_letters = [];
 var remaining_letters = [];
+var remaining_guesses = ['*','*','*','*','*','*','*','*']
 
 function getWord (req,res) {
   var random = words[Math.floor(Math.random() * words.length)];
@@ -68,6 +69,7 @@ function playGame(req,res,guess){
 
   else {
     console.log("guessed wrong!");
+    remaining_guesses.pop();
   }
 
   res.render('index',
@@ -76,7 +78,8 @@ function playGame(req,res,guess){
    word_length: current_session.word.length,
    word_letters: word_letters.join(' '),
    guessed_letters: guessed_letters.join(', '),
-   unguessed_letters: unguessed_letters.join(' ').toUpperCase()});
+   unguessed_letters: unguessed_letters.join(' ').toUpperCase(),
+   remaining_guesses: remaining_guesses.length});
   console.log("req.session.word: "+req.session.word);
   console.log("req.session.word.length: "+req.session.word.length);
   console.log("unguessed_letters: "+unguessed_letters);
