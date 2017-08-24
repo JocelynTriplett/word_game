@@ -69,9 +69,9 @@ function playGame(req,res,guess){
   {session: current_session,
    word: current_session.word,
    word_length: current_session.word.length,
-   word_letters: word_letters,
-   guessed_letters: guessed_letters,
-   unguessed_letters: unguessed_letters});
+   word_letters: word_letters.join(' '),
+   guessed_letters: guessed_letters.join(', '),
+   unguessed_letters: unguessed_letters.join(' ').toUpperCase()});
   console.log("req.session.word: "+req.session.word);
   console.log("req.session.word.length: "+req.session.word.length);
   console.log("unguessed_letters: "+unguessed_letters);
