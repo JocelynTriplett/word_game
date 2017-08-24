@@ -4,13 +4,16 @@ const express = require('express');
 const mustache = require('mustache-express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const path = require('path');
 const app = express();
 
 
 // setup view engine
 app.engine('mustache', mustache());
+app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', './views');
 app.set('view engine', 'mustache');
+
 
 // middleware
 app.use(bodyParser.json());
