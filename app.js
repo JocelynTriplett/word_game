@@ -43,7 +43,7 @@ function getWord (req,res) {
     unguessed_letters.push('_');
   }
   remaining_letters = random.split('');
-  res.redirect('/');
+  playGame (req,res);
 }
 
 function playGame(req,res,guess){
@@ -105,6 +105,10 @@ app.post('/', function(req, res){
   guessed_letters.push(guess);
   playGame (req,res,guess);
 
+});
+
+app.post('/new_game', function(req, res){
+  getWord (req, res);
 });
 
 app.listen(3000, function(){
