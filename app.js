@@ -73,7 +73,7 @@ function playGame(req,res,guess){
   }
 
   if (remaining_guesses.length == 0) {
-    res.render('game_over');
+    res.render('game_over',{word: current_session.word});
   }
   else {
   res.render('index',
