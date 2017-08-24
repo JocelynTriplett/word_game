@@ -94,7 +94,7 @@ app.get('/',function(req,res){
 });
 
 app.post('/', function(req, res){
-  var guess = req.body.letter;
+  var guess = req.body.letter.toLowerCase();
   guessed_letters.push(guess);
   playGame (req,res,guess);
 
