@@ -72,6 +72,10 @@ function playGame(req,res,guess){
     remaining_guesses.pop();
   }
 
+  if (remaining_guesses.length == 0) {
+    res.render('game_over');
+  }
+  else {
   res.render('index',
   {session: current_session,
    word: current_session.word,
@@ -83,7 +87,7 @@ function playGame(req,res,guess){
   console.log("req.session.word: "+req.session.word);
   console.log("req.session.word.length: "+req.session.word.length);
   console.log("unguessed_letters: "+unguessed_letters);
-}
+}};
 
 app.get('/',function(req,res){
   current_session = req.session;
