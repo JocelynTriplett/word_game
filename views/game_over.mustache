@@ -19,8 +19,9 @@
   <h1>{{unguessed_letters}}</h1> -->
 <h1>Game Over!</h1>
 <h1>Play Again?</h1>
-<form action="/new_game" method="post">
-  <input type="submit" autofocus>Play Again</input>
+<form action="/" method="post">
+  <input type="submit" name="playagain" autofocus>Play Again</input>
+  <input type="text" name="letter" value="" hidden />
 </form>
   <!-- <form action="/" method="post">
     <label for="letter">Type a letter</label>
