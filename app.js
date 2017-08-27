@@ -31,8 +31,9 @@ var remaining_guesses = ['*','*','*']
 
 function getWord (req,res,difficulty) {
   var random = words[Math.floor(Math.random() * words.length)];
-  if (difficulty === 'easy') {
-    if (random.length > 3 && random.length < 7) {
+  if ((difficulty === 'easy' && random.length > 3 && random.length < 7) ||
+      (difficulty === 'medium' && random.length > 5 && random.length < 9) ||
+      (difficulty === 'hard' && random.length > 8)) {
       req.session.word = random;
       for (var i = 0; i < random.length; i++) {
         unguessed_letters.push('_');
@@ -45,39 +46,6 @@ function getWord (req,res,difficulty) {
       getWord (req,res,difficulty);
     }
   }
-
-  if (difficulty === 'medium') {
-    if (random.length > 5 && random.length < 9) {
-      req.session.word = random;
-      for (var i = 0; i < random.length; i++) {
-        unguessed_letters.push('_');
-      }
-      remaining_letters = random.split('');
-      word_letters = random.split('');
-      res.redirect('/');
-    }
-    else {
-      getWord (req,res,difficulty);
-    }
-  }
-
-  if (difficulty === 'hard') {
-    if (random.length > 8) {
-      req.session.word = random;
-      for (var i = 0; i < random.length; i++) {
-        unguessed_letters.push('_');
-      }
-      remaining_letters = random.split('');
-      word_letters = random.split('');
-      res.redirect('/');
-    }
-    else {
-      getWord (req,res,difficulty);
-    }
-  }
-
-
-}
 
 function playGame (req,res,guess) {
   console.log("You're playing the game! Your guess is "+guess);
@@ -132,8 +100,8 @@ app.get('/',function(req,res){
       }
   else {
     res.render('welcome');
-    console.log('new game - getting word');
-    getWord (req,res);
+    // console.log('new game - getting word');
+    // getWord (req,res);
   }
 });
 
