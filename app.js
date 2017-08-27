@@ -29,15 +29,54 @@ var remaining_letters = [];
 var guessed_letters = [];
 var remaining_guesses = ['*','*','*']
 
-function getWord (req,res) {
+function getWord (req,res,difficulty) {
   var random = words[Math.floor(Math.random() * words.length)];
-  req.session.word = random;
-  for (var i = 0; i < random.length; i++) {
-    unguessed_letters.push('_');
+  if (difficulty === 'easy') {
+    if (random.length > 3 && random.length < 7) {
+      req.session.word = random;
+      for (var i = 0; i < random.length; i++) {
+        unguessed_letters.push('_');
+      }
+      remaining_letters = random.split('');
+      word_letters = random.split('');
+      res.redirect('/');
+    }
+    else {
+      getWord (req,res,difficulty);
+    }
   }
-  remaining_letters = random.split('');
-  word_letters = random.split('');
-  res.redirect('/');
+
+  if (difficulty === 'medium') {
+    if (random.length > 5 && random.length < 9) {
+      req.session.word = random;
+      for (var i = 0; i < random.length; i++) {
+        unguessed_letters.push('_');
+      }
+      remaining_letters = random.split('');
+      word_letters = random.split('');
+      res.redirect('/');
+    }
+    else {
+      getWord (req,res,difficulty);
+    }
+  }
+
+  if (difficulty === 'hard') {
+    if (random.length > 8) {
+      req.session.word = random;
+      for (var i = 0; i < random.length; i++) {
+        unguessed_letters.push('_');
+      }
+      remaining_letters = random.split('');
+      word_letters = random.split('');
+      res.redirect('/');
+    }
+    else {
+      getWord (req,res,difficulty);
+    }
+  }
+
+
 }
 
 function playGame (req,res,guess) {
@@ -70,23 +109,18 @@ function playGame (req,res,guess) {
       });
     }
     if (!unguessed_letters.includes('_')){
-      res.render('you_won');
+      res.render('you_won',{word: current_session.word});
 
     }
     else {
       res.redirect('/');
-    }    
+    }
   }
 }
 
 app.get('/',function(req,res){
   current_session = req.session;
   if (current_session.word) {
-    // console.log("mystery word is: "+current_session.word);
-    // console.log("unguessed_letters: "+unguessed_letters);
-    // console.log("remaining_letters: "+remaining_letters);
-    // console.log("word_letters: "+word_letters);
-    // console.log("remaining_guesses: "+remaining_guesses);
     res.render('index',
     {session: current_session,
         word: current_session.word,
@@ -97,6 +131,7 @@ app.get('/',function(req,res){
         remaining_guesses: remaining_guesses.length});
       }
   else {
+    res.render('welcome');
     console.log('new game - getting word');
     getWord (req,res);
   }
@@ -105,14 +140,20 @@ app.get('/',function(req,res){
 app.post('/', function(req, res){
   console.log(req.body);
   console.log(req.body.letter);
-  if (req.body.letter === ''){
+  if (req.body.letter === '?'){
     console.log("guess is blank! Starting new game!");
     delete req.session.word;
+    difficulty = req.body.difficulty;
     remaining_guesses = ['*','*','*'];
     guessed_letters = [];
     unguessed_letters = [];
-    getWord (req,res);
+    getWord (req,res,difficulty);
   }
+
+  else if (req.body.letter === ''){
+    res.render('welcome');
+  }
+
   else {
     var guess = req.body.letter.toLowerCase();
     if (guessed_letters.includes(guess)) {
@@ -121,7 +162,6 @@ app.post('/', function(req, res){
     else {
       guessed_letters.push(guess);
     }
-
     playGame (req,res,guess);
   }
 });

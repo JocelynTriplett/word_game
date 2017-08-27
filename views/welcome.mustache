@@ -11,17 +11,13 @@
 <body>
   <!-- <h3>This is views/index.mustache</h3> -->
   <h1>Mystery Word</h1>
-  <h2>The mystery word was: {{word}}</h2>
-  <!-- <h2>It is {{word_length}} characters long.</h2>
-  <h2>Here are the letters: {{word_letters}}.</h2> -->
-  <!-- <h2>You have guessed: {{guessed_letters}}</h2>
-  <h2>You have {{remaining_guesses}} guesses remaining.</h2>
-  <h1>{{unguessed_letters}}</h1> -->
-<h1>You Won!</h1>
-<h1>Play Again?</h1>
+  <h2>Choose difficulty level:</h2>
 <form action="/" method="post">
-  <input type="submit" name="playagain" autofocus>Play Again</input>
-  <input type="text" name="letter" value="" hidden />
+  <input type="submit" name="playagain" autofocus>Play</input>
+  <input type="text" name="letter" value="?" hidden />
+  <input type="radio" name="difficulty" value="easy" checked> Easy<br>
+  <input type="radio" name="difficulty" value="medium"> Medium<br>
+  <input type="radio" name="difficulty" value="hard"> Hard  
 </form>
   <!-- <form action="/" method="post">
     <label for="letter">Type a letter</label>
