@@ -69,7 +69,13 @@ function playGame (req,res,guess) {
         }
       });
     }
-    res.redirect('/');
+    if (!unguessed_letters.includes('_')){
+      res.render('you_won');
+
+    }
+    else {
+      res.redirect('/');
+    }    
   }
 }
 
