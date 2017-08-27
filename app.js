@@ -47,6 +47,7 @@ function playGame (req,res,guess) {
   console.log("remaining_letters: "+remaining_letters);
   console.log("word_letters: "+word_letters);
   console.log("remaining_guesses: "+remaining_guesses);
+
   if (!remaining_letters.includes(guess)){
     console.log("guessed wrong!");
     console.log("your guess was "+guess+" it is not a letter in "+word_letters);
@@ -58,19 +59,18 @@ function playGame (req,res,guess) {
   }
   else {
     console.log("guessed right!");
-    console.log("your guess was "+guess+", which is a letter in "+word_letters);
+    console.log("your guess was "+guess+", which is a letter in "+remaining_letters);
     for (var i = 0; i < remaining_letters.length; i++) {
       guessed_letter = remaining_letters.find(function(guessed_letter){
-        return guessed_letter === guess;
+        if (guessed_letter === guess) {
+          console.log("guessed_letter index: "+remaining_letters.indexOf(guessed_letter))
+          unguessed_letters[remaining_letters.indexOf(guessed_letter)] = guess;
+          remaining_letters[remaining_letters.indexOf(guessed_letter)] = ' ';
+        }
       });
-      console.log("guessed_letter index: "+remaining_letters.indexOf(guessed_letter))
-      unguessed_letters[remaining_letters.indexOf(guessed_letter)] = guess;
-      remaining_letters[word_letters.indexOf(guessed_letter)] = ' ';
     }
     res.redirect('/');
   }
-
-
 }
 
 app.get('/',function(req,res){
@@ -109,7 +109,13 @@ app.post('/', function(req, res){
   }
   else {
     var guess = req.body.letter.toLowerCase();
-    guessed_letters.push(guess);
+    if (guessed_letters.includes(guess)) {
+      console.log("you already guessed that letter!");
+    }
+    else {
+      guessed_letters.push(guess);
+    }
+
     playGame (req,res,guess);
   }
 });
