@@ -128,6 +128,7 @@ app.get("/", function(req, res) {
 app.post("/", function(req, res) {
   console.log(req.body);
   console.log(req.body.letter);
+
   // code from welcome template
   if (req.body.letter === "?") {
     console.log("guess is blank! Starting new game!");
@@ -142,13 +143,19 @@ app.post("/", function(req, res) {
     res.render("welcome");
   } else if (req.body.player) {
     // code from you_won template
-    var winners = {
-      table: []
-    };
-    winners.table.push({ name: req.body.player, won: 1 });
-    var json = JSON.stringify(winners);
-    fs.writeFile("players.json", json, "utf8");
-    res.render("you_won", {players: winners.table});
+    fs.readFile("players.json", "utf8", function readFileCallback(err, data) {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        winners = JSON.parse(data); //now it an object
+        winners.table.push({ name: req.body.player, won: 1 }); //add some data
+        json = JSON.stringify(winners); //convert it back to json
+        fs.writeFile("players.json", json, "utf8"); // write it back
+        res.render("welcome", {
+          players: winners.table});
+      }
+    });
   } else {
     // code from index template
     var guess = req.body.letter.toLowerCase();
