@@ -149,7 +149,26 @@ app.post("/", function(req, res) {
       }
       else {
         winners = JSON.parse(data); //now it an object
-        winners.table.push({ name: req.body.player, won: 1 }); //add some data
+        var match = winners.table.filter(function(obj){
+          return obj.name === req.body.player;
+        })
+        console.log("match: "+match[0]);
+        console.log("match.won: "+match[0].won);
+        if (match[0]) {
+          match[0].won = match[0].won+1;
+        }
+        else {
+          winners.table.push({ name: req.body.player, won: 1 });
+        }
+        // for (var i = 0; i < winners.table.length; i++) {
+        //   if (winners.table[i].name === req.body.player) {
+        //     winners.table[i].won += 1;
+        //   }
+        //   else {
+        //       winners.table.push({ name: req.body.player, won: 1 }); //add some data
+        //   }
+        // }
+
         json = JSON.stringify(winners); //convert it back to json
         fs.writeFile("players.json", json, "utf8"); // write it back
         res.render("welcome", {
