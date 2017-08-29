@@ -148,7 +148,7 @@ app.post("/", function(req, res) {
     winners.table.push({ name: req.body.player, won: 1 });
     var json = JSON.stringify(winners);
     fs.writeFile("players.json", json, "utf8");
-    res.render("you_won", {players: winners});
+    res.render("you_won", {players: winners.table});
   } else {
     // code from index template
     var guess = req.body.letter.toLowerCase();
