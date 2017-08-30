@@ -4,4 +4,37 @@ body {
   align-items: center;
   background-color: gray;
   color: white;
+  font-family: sans-serif;
+}
+
+.unguessed_letters {
+  font-size: 3em;
+}
+
+.welcome {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.row-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
+  /*display: block;*/
+}
+
+.letter_input {
+  width: 50px;
+  line-height: 30px;
+  text-align: center;
+  font-size: 1.5em;
 }

@@ -69,7 +69,7 @@ function playGame(req, res, guess) {
     );
     remaining_guesses.pop();
     if (remaining_guesses.length === 0) {
-      res.render("game_over");
+      res.render("game_over", {word: current_session.word});
     } else res.redirect("/");
   } else {
     console.log("guessed right!");
@@ -119,9 +119,12 @@ app.get("/", function(req, res) {
       remaining_guesses: remaining_guesses.length
     });
   } else {
-    res.render("welcome");
-    // console.log('new game - getting word');
-    // getWord (req,res);
+fs.readFile("players.json", "utf8", function readFileCallback(err, data) {
+    winners = JSON.parse(data); //now it an object
+
+    res.render("welcome", {
+      players: winners.table});
+});
   }
 });
 
@@ -160,14 +163,6 @@ app.post("/", function(req, res) {
         else {
           winners.table.push({ name: req.body.player, won: 1 });
         }
-        // for (var i = 0; i < winners.table.length; i++) {
-        //   if (winners.table[i].name === req.body.player) {
-        //     winners.table[i].won += 1;
-        //   }
-        //   else {
-        //       winners.table.push({ name: req.body.player, won: 1 }); //add some data
-        //   }
-        // }
 
         json = JSON.stringify(winners); //convert it back to json
         fs.writeFile("players.json", json, "utf8"); // write it back

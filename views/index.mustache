@@ -16,11 +16,14 @@
    <h2>Here are the letters: {{word_letters}}.</h2> -->
    <h2>You have guessed: {{guessed_letters}}</h2>
    <h2>You have {{remaining_guesses}} guesses remaining.</h2>
-   <h1>{{unguessed_letters}}</h1>
+   <h1 class="unguessed_letters">{{unguessed_letters}}</h1>
 
    <form action="/" method="post">
-     <label for="letter">Type a letter</label>
-     <input type="text" name="letter" maxlength="1" autofocus/>
+     <label for="letter">Guess a letter: </label>
+     <br/>
+
+     <input type="text" name="letter" maxlength="1" class="letter_input"autofocus/>
+     <br/>
      <input type="submit" name="submit" />
    </form>
 

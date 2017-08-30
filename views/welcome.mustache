@@ -9,16 +9,33 @@
 </head>
 
 <body>
-  <!-- <h3>This is views/index.mustache</h3> -->
   <h1>Mystery Word</h1>
-  <h2>Choose difficulty level:</h2>
+  <div class="welcome">
+<div class="row-items">
+  <h2>Choose a difficulty level:</h2>
 <form action="/" method="post">
-  <input type="submit" name="playagain" autofocus>Play</input>
   <input type="text" name="letter" value="?" hidden />
-  <input type="radio" name="difficulty" value="easy" checked> Easy<br>
-  <input type="radio" name="difficulty" value="medium"> Medium<br>
-  <input type="radio" name="difficulty" value="hard"> Hard
+  <input type="radio" name="difficulty" value="easy" checked> Easy</input>
+  <br/>
+  <input type="radio" name="difficulty" value="medium"> Medium</input>
+  <br/>
+  <input type="radio" name="difficulty" value="hard"> Hard</input>
+  <br/>
+  <br/>
+  <input type="submit" name="playagain" value="Play Game" autofocus />
 </form>
+</div>
+<div class="row-items">
+  <h2>Leaderboard:</h2>
+  <ul>
+    <h3>Name - Games Won</h3>
+    {{#players}}
+    <li>{{name}} - {{won}}</li>
+    {{/players}}
+  </ul>
+</div>
+
+</div>
 </body>
 
 </html>
