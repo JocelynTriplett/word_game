@@ -11,7 +11,17 @@
 <body>
   <h1>Mystery Word</h1>
   <div class="welcome">
-<div class="row-items">
+
+<div class="row-items leaderboard">
+  <h2>Leaderboard:</h2>
+  <ul>
+    <h3>Name - Games Won</h3>
+    {{#players}}
+    <li>{{name}} - {{won}}</li>
+    {{/players}}
+  </ul>
+</div>
+<div class="row-items choose-difficulty">
   <h2>Choose a difficulty level:</h2>
 <form action="/" method="post">
   <input type="text" name="letter" value="?" hidden />
@@ -25,16 +35,6 @@
   <input type="submit" name="playagain" value="Play Game" autofocus />
 </form>
 </div>
-<div class="row-items">
-  <h2>Leaderboard:</h2>
-  <ul>
-    <h3>Name - Games Won</h3>
-    {{#players}}
-    <li>{{name}} - {{won}}</li>
-    {{/players}}
-  </ul>
-</div>
-
 </div>
 </body>
 

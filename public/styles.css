@@ -22,6 +22,32 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
+.leaderboard {
+  position: relative;
+  right: 10vw;
+}
+
+.choose-difficulty {
+  position: relative;
+  left: 10vw;
+}
+
+.leaderboard h2{
+  margin-bottom: 0;
+}
+.leaderboard h3{
+  margin-bottom: 0;
+}
+.leaderboard ul{
+  margin-top: 0;
+}
+
+li {
+  position: relative;
+  left: 5vw;
+  list-style: none;
+}
 form {
   display: flex;
   flex-direction: column;

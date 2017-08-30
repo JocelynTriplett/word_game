@@ -33,7 +33,7 @@ app.use(
 var unguessed_letters = [];
 var remaining_letters = [];
 var guessed_letters = [];
-var remaining_guesses = ["*", "*", "*"];
+var remaining_guesses = ["*", "*", "*", "*", "*", "*", "*", "*"];
 
 function getWord(req, res, difficulty) {
   var random = words[Math.floor(Math.random() * words.length)];
@@ -137,7 +137,7 @@ app.post("/", function(req, res) {
     console.log("guess is blank! Starting new game!");
     delete req.session.word;
     difficulty = req.body.difficulty;
-    remaining_guesses = ["*", "*", "*"];
+    remaining_guesses = ["*", "*", "*", "*", "*", "*", "*", "*"];
     guessed_letters = [];
     unguessed_letters = [];
     getWord(req, res, difficulty);
@@ -147,16 +147,13 @@ app.post("/", function(req, res) {
   } else if (req.body.player) {
     // code from you_won template
     fs.readFile("players.json", "utf8", function readFileCallback(err, data) {
-      if (err) {
-        console.log(err);
-      }
-      else {
+
         winners = JSON.parse(data); //now it an object
         var match = winners.table.filter(function(obj){
           return obj.name === req.body.player;
         })
-        console.log("match: "+match[0]);
-        console.log("match.won: "+match[0].won);
+        // console.log("match: "+match[0]);
+        // console.log("match.won: "+match[0].won);
         if (match[0]) {
           match[0].won = match[0].won+1;
         }
@@ -168,7 +165,7 @@ app.post("/", function(req, res) {
         fs.writeFile("players.json", json, "utf8"); // write it back
         res.render("welcome", {
           players: winners.table});
-      }
+
     });
   } else {
     // code from index template
