@@ -69,7 +69,7 @@ function playGame(req, res, guess) {
     );
     remaining_guesses.pop();
     if (remaining_guesses.length === 0) {
-      res.render("game_over", {word: current_session.word});
+      res.render("game_over", { word: current_session.word });
     } else res.redirect("/");
   } else {
     console.log("guessed right!");
@@ -119,12 +119,12 @@ app.get("/", function(req, res) {
       remaining_guesses: remaining_guesses.length
     });
   } else {
-fs.readFile("players.json", "utf8", function readFileCallback(err, data) {
-    winners = JSON.parse(data); //now it an object
-
-    res.render("welcome", {
-      players: winners.table});
-});
+    fs.readFile("players.json", "utf8", function readFileCallback(err, data) {
+      winners = JSON.parse(data);
+      res.render("welcome", {
+        players: winners.table
+      });
+    });
   }
 });
 
@@ -147,25 +147,21 @@ app.post("/", function(req, res) {
   } else if (req.body.player) {
     // code from you_won template
     fs.readFile("players.json", "utf8", function readFileCallback(err, data) {
+      winners = JSON.parse(data);
+      var match = winners.table.filter(function(obj) {
+        return obj.name === req.body.player;
+      });
+      if (match[0]) {
+        match[0].won = match[0].won + 1;
+      } else {
+        winners.table.push({ name: req.body.player, won: 1 });
+      }
 
-        winners = JSON.parse(data); //now it an object
-        var match = winners.table.filter(function(obj){
-          return obj.name === req.body.player;
-        })
-        // console.log("match: "+match[0]);
-        // console.log("match.won: "+match[0].won);
-        if (match[0]) {
-          match[0].won = match[0].won+1;
-        }
-        else {
-          winners.table.push({ name: req.body.player, won: 1 });
-        }
-
-        json = JSON.stringify(winners); //convert it back to json
-        fs.writeFile("players.json", json, "utf8"); // write it back
-        res.render("welcome", {
-          players: winners.table});
-
+      json = JSON.stringify(winners);
+      fs.writeFile("players.json", json, "utf8");
+      res.render("welcome", {
+        players: winners.table
+      });
     });
   } else {
     // code from index template
