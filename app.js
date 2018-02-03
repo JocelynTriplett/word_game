@@ -1,4 +1,6 @@
 const fs = require("fs");
+
+// Use Mac built-in dictionary to supply words.
 const words = fs
   .readFileSync("/usr/share/dict/words", "utf-8")
   .toLowerCase()
@@ -108,6 +110,12 @@ function playGame(req, res, guess) {
 
 app.get("/", function(req, res) {
   current_session = req.session;
+  if (remaining_guesses.length > 1) {
+    remaining_guesses_text = "You have " + remaining_guesses.length + " guesses left."
+  }
+  else {
+    remaining_guesses_text = "You have 1 guess left."
+  }
   if (current_session.word) {
     res.render("index", {
       session: current_session,
@@ -116,7 +124,7 @@ app.get("/", function(req, res) {
       word_letters: word_letters.join(" "),
       guessed_letters: guessed_letters.join(", "),
       unguessed_letters: unguessed_letters.join(" ").toUpperCase(),
-      remaining_guesses: remaining_guesses.length
+      remaining_guesses: remaining_guesses_text,
     });
   } else {
     fs.readFile("players.json", "utf8", function readFileCallback(err, data) {
