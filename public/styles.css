@@ -2,9 +2,16 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: gray;
+  text-align: center;
+  background-image: url(../images/45degreee_fabric.png);
   color: white;
-  font-family: sans-serif;
+  font-family: 'Cinzel', serif;
+  text-shadow: 2px 2px black;
+}
+
+.text_container {
+  flex-direction: column;
+  align-items: center;
 }
 
 .unguessed_letters {
@@ -13,7 +20,7 @@ body {
 
 .welcome {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
 }
 

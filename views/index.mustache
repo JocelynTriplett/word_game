@@ -6,14 +6,15 @@
      <title>Mystery Word</title>
      <meta name="description" content="DESCRIPTION">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+
  </head>
 
  <body>
-   <!-- <h3>This is views/index.mustache</h3> -->
+
+   <img src="../images/tree.png" style="position: fixed; top: 0px; right: 0px; height: 100vh; z-index: -2;"/>
+   <div id="text_container">
    <h1>Mystery Word</h1>
-   <!-- <h2>The mystery word is: {{word}}</h2> -->
-   <!-- <h2>It is {{word_length}} characters long.</h2>
-   <h2>Here are the letters: {{word_letters}}.</h2> -->
    <h2>You have guessed: {{guessed_letters}}</h2>
    <h2>You have {{remaining_guesses}} guesses remaining.</h2>
    <h1 class="unguessed_letters">{{unguessed_letters}}</h1>
@@ -24,5 +25,10 @@
      <br/>
      <input type="submit" name="submit" />
    </form>
+    </div>
+   <img src="../images/headstone.png" style="position: fixed; bottom: 0px; left: 10vw; height: 30vh; z-index: -2;"/>
+   <img src="../images/longfence.png" style="position: fixed; bottom: 0px; height: 20vh; width: 100vw; z-index: -1;"/>
+   <img src="../images/rip.png" style="position: fixed; bottom: 0px; left: 0px; height: 40vh; z-index: -3;"/>
+
  </body>
  </html>

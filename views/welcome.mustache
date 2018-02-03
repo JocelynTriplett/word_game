@@ -6,12 +6,26 @@
     <title>Mystery Word</title>
     <meta name="description" content="DESCRIPTION">
    <link rel="stylesheet" href="styles.css">
+   <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
 </head>
 
 <body>
   <h1>Mystery Word</h1>
   <div class="welcome">
-
+    <div class="row-items choose-difficulty">
+      <h2>Choose a difficulty level:</h2>
+    <form action="/" method="post">
+      <input type="text" name="letter" value="?" hidden />
+      <input type="radio" name="difficulty" value="easy" checked> Easy</input>
+      <br/>
+      <input type="radio" name="difficulty" value="medium"> Medium</input>
+      <br/>
+      <input type="radio" name="difficulty" value="hard"> Hard</input>
+      <br/>
+      <br/>
+      <input type="submit" name="playagain" value="Play Game" autofocus />
+    </form>
+    </div>
 <div class="row-items leaderboard">
   <h2>Leaderboard:</h2>
   <ul>
@@ -21,20 +35,7 @@
     {{/players}}
   </ul>
 </div>
-<div class="row-items choose-difficulty">
-  <h2>Choose a difficulty level:</h2>
-<form action="/" method="post">
-  <input type="text" name="letter" value="?" hidden />
-  <input type="radio" name="difficulty" value="easy" checked> Easy</input>
-  <br/>
-  <input type="radio" name="difficulty" value="medium"> Medium</input>
-  <br/>
-  <input type="radio" name="difficulty" value="hard"> Hard</input>
-  <br/>
-  <br/>
-  <input type="submit" name="playagain" value="Play Game" autofocus />
-</form>
-</div>
+
 </div>
 </body>
 
