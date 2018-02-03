@@ -15,6 +15,10 @@ body {
   font-size: 3em;
 }
 
+label {
+  font-size: 1.5em;
+}
+
 .submit {
   color: white;
   width: 150px;
@@ -35,40 +39,59 @@ body {
 
 .welcome {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
+  background-image: url(../images/45degreee_fabric.png);
+  border-color: black;
+  border-width: 3px;
+  border-radius: 5px;
+  padding: 0 5px 5px 5px;
 }
 
 .row-items {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url(../images/45degreee_fabric.png);
+  border-color: black;
+  border-width: 3px;
+  border-radius: 5px;
+  padding: 0 5px 5px 5px;
 }
 
-.leaderboard {
+.spacer {
+  width: 5vw;
+}
+/* .leaderboard {
   position: relative;
   right: 10vw;
 }
+ */
 
-.choose-difficulty {
-  position: relative;
-  left: 10vw;
+ .leaderboard h2 {
+   margin-bottom: 2px;
+ }
+
+ .leaderboard h3 {
+   margin-top: 2px;
+ }
+
+ .winner {
+   padding: 0;
+   margin: 3px;
+ }
+
+
+.choose-difficulty-choices {
+  align-items: left;
 }
 
-.leaderboard h2 {
-  margin-bottom: 0;
-}
-.leaderboard h3 {
-  margin-bottom: 0;
-}
-.leaderboard ul {
-  margin-top: 0;
-}
 
 li {
-  position: relative;
-  left: 5vw;
+  /* position: relative;
+  left: 5vw; */
   list-style: none;
+  font-size: 1em;
 }
 form {
   display: flex;

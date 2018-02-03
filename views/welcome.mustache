@@ -2,45 +2,54 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Mystery Word</title>
-    <meta name="description" content="DESCRIPTION">
-   <link rel="stylesheet" href="styles.css">
-   <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Mystery Word</title>
+  <meta name="description" content="DESCRIPTION">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
 </head>
 
 <body>
-  <img src="../images/tree.png" style="position: fixed; top: 0px; right: 0px; height: 100vh; z-index: -2;"/>
+  <img src="../images/tree.png" style="position: fixed; top: 0px; right: 0px; height: 100vh; z-index: -2;" />
   <h1 class="title">Mystery! Word</h1>
   <div class="welcome">
-    <div class="row-items choose-difficulty">
-      <h2>Choose a difficulty level:</h2>
-    <form action="/" method="post">
-      <input type="text" name="letter" value="?" hidden />
-      <input type="radio" name="difficulty" value="easy" checked> Easy</input>
-      <br/>
-      <input type="radio" name="difficulty" value="medium"> Medium</input>
-      <br/>
-      <input type="radio" name="difficulty" value="hard"> Hard</input>
-      <br/>
-      <br/>
-      <input type="submit" name="playagain" value="PLAY GAME" class="submit" autofocus />
-    </form>
-    </div>
-<div class="row-items leaderboard">
-  <h2>Leaderboard:</h2>
-  <ul>
-    <h3>Name - Games Won</h3>
-    {{#players}}
-    <li>{{name}} - {{won}}</li>
-    {{/players}}
-  </ul>
-</div>
 
-</div>
-<img src="../images/headstone.png" style="position: fixed; bottom: 0px; left: 10vw; height: 30vh; z-index: -2;"/>
-<img src="../images/longfence.png" style="position: fixed; bottom: 0px; height: 17vh; width: 100vw; z-index: -1;"/>
-<img src="../images/rip.png" style="position: fixed; bottom: 0px; left: 0px; height: 40vh; z-index: -3;"/>
+    <div class="row-items leaderboard">
+      <h2>Leaderboard:</h2>
+        <h3>Name - Games Won</h3>
+      <!-- <ul> -->
+        {{#players}}
+          <p class="winner">{{name}} - {{won}}</p>
+        {{/players}}
+      <!-- </ul> -->
+    </div>
+
+    <div class="spacer">
+    </div>
+
+    <div class="row-items choose-difficulty">
+      <h2>Choose a <br/>
+        difficulty level:</h2>
+      <form action="/" method="post" class="choose-difficulty-choices">
+        <input type="text" name="letter" value="?" hidden />
+        <label for="difficulty">
+        <input type="radio" name="difficulty" value="easy" checked> Easy</input>
+        </label>
+        <label for="difficulty">
+        <input type="radio" name="difficulty" value="medium"> Medium</input>
+        </label>
+        <label for="difficulty">
+        <input type="radio" name="difficulty" value="hard"> Hard</input>
+        </label>
+        <br/>
+        <input type="submit" name="playagain" value="PLAY GAME" class="submit" autofocus />
+      </form>
+    </div>
+
+  </div>
+  <img src="../images/headstone.png" style="position: fixed; bottom: 0px; left: 10vw; height: 30vh; z-index: -2;" />
+  <img src="../images/longfence.png" style="position: fixed; bottom: 0px; height: 17vh; width: 100vw; z-index: -1;" />
+  <img src="../images/rip.png" style="position: fixed; bottom: 0px; left: 0px; height: 40vh; z-index: -3;" />
 </body>
 
 </html>
