@@ -151,7 +151,11 @@ app.post("/", function(req, res) {
     getWord(req, res, difficulty);
   } else if (req.body.letter === "" && !req.body.player) {
     // code from game_over template
-    res.render("welcome");
+    fs.readFile("players.json", "utf8", function readFileCallback(err, data) {
+      winners = JSON.parse(data);
+    res.render("welcome", {
+      players: winners.table
+    })});
   } else if (req.body.player) {
     // code from you_won template
     fs.readFile("players.json", "utf8", function readFileCallback(err, data) {
