@@ -2,7 +2,7 @@ const fs = require("fs");
 
 // Use Mac built-in dictionary to supply words.
 const words = fs
-  .readFileSync("/usr/share/dict/words", "utf-8")
+  .readFileSync("public/words/words", "utf-8")
   .toLowerCase()
   .split("\n");
 const express = require("express");
