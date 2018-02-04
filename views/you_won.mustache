@@ -2,35 +2,31 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Mystery Word</title>
-    <meta name="description" content="DESCRIPTION">
-   <link rel="stylesheet" href="styles.css">
-   <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <title>Mystery Word</title>
+  <meta name="description" content="DESCRIPTION">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
 </head>
 
 <body>
   <img src="../images/tree.png" style="position: fixed; top: 0px; right: 0px; height: 100vh; z-index: -2;"/>
-  <!-- <h3>This is views/index.mustache</h3> -->
   <h1 class="title" id="youwon_title">Mystery! Word</h1>
   <div class="gray_background">
-
-
-  <h2>The mystery word was: <br/>
+    <h2>The mystery word was: <br/>
     <div id="winning_word">
       {{word}}
     </div></h2>
-<h1>You Won!</h1>
-<form action="/" method="post">
-  <label>Record your win:</label>
-  <br/>
-  <input type="text" name="player" placeholder="Enter your name"/>
-  </br/>
-  <input type="submit" name="playagain" value="Play Again" class="submit" autofocus></input>
-  <input type="text" name="letter" value="" hidden />
-</form>
-</div>
+    <h1>You Won!</h1>
+    <form action="/" method="post">
+      <label>Record your win:</label>
+      <br/>
+      <input type="text" name="player" placeholder="Enter your name"/>
+      </br/>
+      <input type="submit" name="playagain" value="Play Again" class="submit" autofocus></input>
+      <input type="text" name="letter" value="" hidden />
+    </form>
+  </div>
 <img src="../images/headstone.png" style="position: fixed; bottom: 0px; left: 10vw; height: 30vh; z-index: -2;"/>
 <img src="../images/longfence.png" style="position: fixed; bottom: 0px; height: 17vh; width: 100vw; z-index: -1;"/>
 <img src="../images/rip.png" style="position: fixed; bottom: 0px; left: 0px; height: 40vh; z-index: -3;"/>

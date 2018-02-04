@@ -168,7 +168,6 @@ app.post("/", function(req, res) {
       } else {
         winners.table.push({ name: req.body.player, won: 1 });
       }
-
       json = JSON.stringify(winners);
       fs.writeFile("players.json", json, "utf8");
       res.render("welcome", {

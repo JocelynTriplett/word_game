@@ -1,129 +1,117 @@
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background-image: url(../images/45degreee_fabric.png);
-  color: white;
-  font-family: 'Cinzel', serif;
-  text-shadow: 2px 2px black;
-}
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-image: url(../images/45degreee_fabric.png);
+    color: white;
+    font-family: 'Cinzel', serif;
+    text-shadow: 2px 2px black;
+  }
 
-.title {
-  color: black;
-  text-shadow: 2px 2px white;
-  font-size: 3em;
-}
+  .title {
+    color: black;
+    text-shadow: 2px 2px white;
+    font-size: 3em;
+  }
 
-label {
-  font-size: 1.5em;
-}
+  label {
+    font-size: 1.5em;
+  }
 
-.submit {
-  color: white;
-  width: 150px;
-  background-color: black;
-  font-family: 'Cinzel', serif;
-  /* text-shadow: 2px 2px gray; */
-  border-radius: 5px;
-}
+  .submit {
+    color: white;
+    width: 150px;
+    background-color: black;
+    font-family: 'Cinzel', serif;
+    /* text-shadow: 2px 2px gray; */
+    border-radius: 5px;
+  }
 
-.text_container {
-  flex-direction: column;
-  align-items: center;
-}
+  .text_container {
+    flex-direction: column;
+    align-items: center;
+  }
 
-.unguessed_letters {
-  font-size: 3em;
-}
+  .unguessed_letters {
+    font-size: 3em;
+  }
 
-.welcome {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background-image: url(../images/45degreee_fabric.png);
-  border-color: black;
-  border-width: 3px;
-  border-radius: 5px;
-  padding: 0 5px 5px 5px;
-}
+  .welcome {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-image: url(../images/45degreee_fabric.png);
+    border-color: black;
+    border-width: 3px;
+    border-radius: 5px;
+    padding: 0 5px 5px 5px;
+  }
 
-.row-items {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-image: url(../images/45degreee_fabric.png);
-  border-color: black;
-  border-width: 3px;
-  border-radius: 5px;
-  padding: 0 5px 5px 5px;
-}
+  .row-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(../images/45degreee_fabric.png);
+    border-color: black;
+    border-width: 3px;
+    border-radius: 5px;
+    padding: 0 5px 5px 5px;
+  }
 
-.spacer {
-  width: 5vw;
-}
-/* .leaderboard {
-  position: relative;
-  right: 10vw;
-}
- */
+  .spacer {
+    width: 5vw;
+  }
 
- .leaderboard h2 {
-   margin-bottom: 2px;
- }
+  .leaderboard h2 {
+    margin-bottom: 2px;
+  }
 
- .leaderboard h3 {
-   margin-top: 2px;
- }
+  .leaderboard h3 {
+    margin-top: 2px;
+  }
 
- .winner {
-   padding: 0;
-   margin: 3px;
- }
+  .winner {
+    padding: 0;
+    margin: 3px;
+  }
 
+  .choose-difficulty-choices {
+    align-items: left;
+  }
 
-.choose-difficulty-choices {
-  align-items: left;
-}
+  li {
+    list-style: none;
+    font-size: 1em;
+  }
 
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-li {
-  /* position: relative;
-  left: 5vw; */
-  list-style: none;
-  font-size: 1em;
-}
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  .letter_input {
+    width: 50px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 1.5em;
+    border-color: red;
+    border-radius: 5px;
+    outline: none;
+  }
 
-input {
-  /*display: block;*/
-}
+  #youwon_title {
+    margin-bottom: 0;
+  }
 
-.letter_input {
-  width: 50px;
-  line-height: 30px;
-  text-align: center;
-  font-size: 1.5em;
-  border-color: red;
-  border-radius: 5px;
-  outline: none;
-}
+  .gray_background {
+    background-image: url(../images/45degreee_fabric.png);
+    border-radius: 5px;
+  }
 
-#youwon_title {
-  margin-bottom: 0;
-}
-
-.gray_background {
-  background-image: url(../images/45degreee_fabric.png);
-  border-radius: 5px;
-}
-
-#winning_word {
-  color: black;
-  text-shadow: 2px 2px white;
-  font-size: 1.5em;
-}
+  #winning_word {
+    color: black;
+    text-shadow: 2px 2px white;
+    font-size: 1.5em;
+  }
