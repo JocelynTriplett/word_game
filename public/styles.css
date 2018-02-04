@@ -8,6 +8,7 @@
     font-family: 'Cinzel', serif;
     text-shadow: 2px 2px black;
     height: 100vh;
+    font-size: 1.5em;
   }
 
   .title {
@@ -58,6 +59,7 @@
     border-width: 3px;
     border-radius: 5px;
     padding: 0 5px 5px 5px;
+    flex-grow: 1;
   }
 
   .spacer {
