@@ -28,6 +28,7 @@
     font-family: 'Cinzel', serif;
     /* text-shadow: 2px 2px gray; */
     border-radius: 5px;
+    margin-top: 5px;
   }
 
   .text_container {
