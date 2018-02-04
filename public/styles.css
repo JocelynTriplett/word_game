@@ -112,3 +112,18 @@ input {
   border-radius: 5px;
   outline: none;
 }
+
+#youwon_title {
+  margin-bottom: 0;
+}
+
+.gray_background {
+  background-image: url(../images/45degreee_fabric.png);
+  border-radius: 5px;
+}
+
+#winning_word {
+  color: black;
+  text-shadow: 2px 2px white;
+  font-size: 1.5em;
+}
