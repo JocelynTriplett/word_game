@@ -13,6 +13,7 @@ const path = require("path");
 const players = require("./players");
 const app = express();
 
+
 // setup view engine
 app.engine("mustache", mustache());
 app.use(express.static(path.join(__dirname, "public")));
@@ -186,6 +187,6 @@ app.post("/", function(req, res) {
   }
 });
 
-app.listen(3000, function() {
-  console.log("Example app listening on port 3000!");
+app.listen(5000, function() {
+  console.log("Example app listening on port 5000!");
 });
