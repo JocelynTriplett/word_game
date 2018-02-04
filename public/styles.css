@@ -38,6 +38,7 @@
 
   .unguessed_letters {
     font-size: 3em;
+    margin-bottom: 5px;
   }
 
   .welcome {
